@@ -78,7 +78,7 @@ class Course
         foreach ($this as $key => $value) {
             $val = '"' . $value . '"';
             if (is_numeric($value)) {
-                $val = '$value';
+                $val = $value;
             }
             $json .= '"' . $key . '":' . $val . ',';
         }
