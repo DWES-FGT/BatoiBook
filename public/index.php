@@ -27,12 +27,12 @@ $courses = Course::csvToArray(COURSES_CSV_PATH);
 $modules = Module::csvToArray(MODULES_CSV_PATH);
 
 try {
-    $fran = new User("fran", "FranGT12", "frangregori61@gmail.com","franchu");
+    $fran = new User(0, "frangregori61@gmail.com", "franchu","FranGT12");
 } catch (Exception $e) {
     echo "<p>" . $e->getMessage() . "</p>";
 }
 
-$bookFran = new Book(1, $modules[3]->getCode(), "S.L", 19.95,
+$bookFran = new Book((int)null,1, $modules[3]->getCode(), "S.L", 19.95,
     200, "New", "", "Libro muy recomendado", "");
 ?>
 
@@ -56,8 +56,8 @@ $bookFran = new Book(1, $modules[3]->getCode(), "S.L", 19.95,
 <table class="w-full mx-0 mt-0">
     <thead>
     <tr class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+        <th class="px-4 py-3">Id</th>
         <th class="px-4 py-3">Cycle</th>
-        <th class="px-4 py-3">Name</th>
         <th class="px-4 py-3">IdFamily</th>
         <th class="px-4 py-3">VLiteral</th>
         <th class="px-4 py-3">CLiteral</th>
@@ -67,9 +67,9 @@ $bookFran = new Book(1, $modules[3]->getCode(), "S.L", 19.95,
     <?php foreach ($courses as $course): ?>
         <tr class="text-gray-700">
             <td class="px-4 py-3 text-center text-xs border">
-                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"><?= $course->getCycle() ?> </span>
+                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"><?= $course->getId() ?> </span>
             </td>
-            <td class="px-4 py-3 text-ms font-semibold border"><?= $course->getName() ?></td>
+            <td class="px-4 py-3 text-ms font-semibold border"><?= $course->getCycle() ?></td>
             <td class="border">
                 <div class="flex items-center text-sm">
                     <div class="px-4 py-3">

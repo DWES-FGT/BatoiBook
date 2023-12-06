@@ -4,19 +4,29 @@ namespace app\models;
 
 class Course
 {
+    private string $id;
     private string $cycle;
-    private string $name;
     private int $idFamily;
     private string $vliteral;
     private string $cliteral;
 
-    public function __construct(string $cycle, string $name, int $idFamily, string $vliteral, string $cliteral)
+    public function __construct(string $id, string $cycle, int $idFamily, string $vliteral, string $cliteral)
     {
+        $this->id = $id;
         $this->cycle = $cycle;
-        $this->name = $name;
         $this->idFamily = $idFamily;
         $this->vliteral = $vliteral;
         $this->cliteral = $cliteral;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function setId(string $id): void
+    {
+        $this->id = $id;
     }
 
     public function getCycle(): string
@@ -27,16 +37,6 @@ class Course
     public function setCycle(string $cycle): void
     {
         $this->cycle = $cycle;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     public function getIdFamily(): int
@@ -71,7 +71,7 @@ class Course
 
     public function __toString(): string
     {
-        return "Ciclo -> " . $this->cycle . " Familia -> " . $this->idFamily . " VLiteral -> " . $this->vliteral . " CLiteral -> " . $this->cliteral;
+        return "Ciclo -> " . $this->id . " Familia -> " . $this->idFamily . " VLiteral -> " . $this->vliteral . " CLiteral -> " . $this->cliteral;
     }
 
     public function toJSON(): string
@@ -80,7 +80,7 @@ class Course
         foreach ($this as $key => $value) {
             $val = '"' . $value . '"';
             if (is_numeric($value)) {
-                $val = '$value';
+                $val = $value;
             }
             $json .= '"' . $key . '":' . $val . ',';
         }

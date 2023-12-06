@@ -6,40 +6,31 @@ class User
 {
     const PASSWORD_REGEX = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/";
 
-    private string $name;
-    private string $password;
+    private int $id;
     private string $email;
     private string $nick;
+    private string $password;
 
-    public function __construct(string $name, string $password, string $email, string $nick)
+
+    public function __construct(int $id, string $email, string $nick, string $password)
     {
         if (!$this->isValidPassword($password)) {
             throw new Exception("Password no válida");
         }
-        $this->name = $name;
-        $this->password = $password;
+        $this->id = $id;
         $this->email = $email;
         $this->nick = $nick;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): void
-    {
         $this->password = $password;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getEmail(): string
@@ -62,10 +53,19 @@ class User
         $this->nick = $nick;
     }
 
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
     public function __toString(): string
     {
-        return "Nombre -> " . $this->name . " Password -> " . $this->password ." Email -> " . $this->email .
-            " Nick -> " . $this->nick;
+        return "Id -> " . $this->id . " Nick -> " . $this->nick . " Email -> " . $this->email . " Password -> " . $this->password;
     }
 
     public function toJSON(): string
@@ -74,7 +74,7 @@ class User
         foreach ($this as $key => $value) {
             $val = '"' . $value . '"';
             if (is_numeric($value)) {
-                $val = '$value';
+                $val = $value;
             }
             $json .= '"' . $key . '":' . $val . ',';
         }

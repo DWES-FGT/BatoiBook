@@ -4,7 +4,7 @@ namespace app\models;
 
 class Book
 {
-
+    private int $id;
     private int $idUser;
     private int $idModule;
     private string $publisher;
@@ -15,10 +15,11 @@ class Book
     private string $comments;
     private string $soldDate;
 
-    public function __construct(int    $idUser, int $idModule, string $publisher,
+    public function __construct(int    $id, int $idUser, int $idModule, string $publisher,
                                 float  $price, int $pages, string $status, string $photo,
                                 string $comments, string $soldDate)
     {
+        $this->id = $id;
         $this->idUser = $idUser;
         $this->idModule = $idModule;
         $this->publisher = $publisher;
@@ -28,6 +29,16 @@ class Book
         $this->photo = $photo;
         $this->comments = $comments;
         $this->soldDate = $soldDate;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getIdUser(): int
