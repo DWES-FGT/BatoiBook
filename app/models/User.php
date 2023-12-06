@@ -8,15 +8,17 @@ class User
 
     private string $name;
     private string $password;
+    private string $email;
     private string $nick;
 
-    public function __construct(string $name, string $password, string $nick)
+    public function __construct(string $name, string $password, string $email, string $nick)
     {
         if (!$this->isValidPassword($password)) {
             throw new Exception("Password no válida");
         }
         $this->name = $name;
         $this->password = $password;
+        $this->email = $email;
         $this->nick = $nick;
     }
 
@@ -40,6 +42,16 @@ class User
         $this->password = $password;
     }
 
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
     public function getNick(): string
     {
         return $this->nick;
@@ -52,7 +64,7 @@ class User
 
     public function __toString(): string
     {
-        return "Nombre -> " . $this->name . " Password -> " . $this->password .
+        return "Nombre -> " . $this->name . " Password -> " . $this->password ." Email -> " . $this->email .
             " Nick -> " . $this->nick;
     }
 

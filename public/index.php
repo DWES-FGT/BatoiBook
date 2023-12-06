@@ -27,7 +27,7 @@ $courses = Course::csvToArray(COURSES_CSV_PATH);
 $modules = Module::csvToArray(MODULES_CSV_PATH);
 
 try {
-    $fran = new User("fran", "FranGT12", "franchu");
+    $fran = new User("fran", "FranGT12", "frangregori61@gmail.com","franchu");
 } catch (Exception $e) {
     echo "<p>" . $e->getMessage() . "</p>";
 }
