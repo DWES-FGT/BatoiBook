@@ -32,16 +32,16 @@ CREATE TABLE `books`
     `id`        int                                                            NOT NULL,
     `idUser`    int                                                            NOT NULL,
     `idModule`  varchar(12) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci   NOT NULL,
-    `publisher` varchar(50) COLLATE utf8mb4_es_0900_as_cs                      NOT NULL,
+    `publisher` varchar(50) COLLATE utf8mb4_general_ci                      NOT NULL,
     `price`     decimal(10, 0)                                                 NOT NULL DEFAULT '0',
     `pages`     smallint                                                                DEFAULT NULL,
-    `status`    enum ('new','good','used','bad') COLLATE utf8mb4_es_0900_as_cs NOT NULL DEFAULT 'good',
-    `photo`     varchar(200) COLLATE utf8mb4_es_0900_as_cs                     NOT NULL,
-    `comments`  text COLLATE utf8mb4_es_0900_as_cs                             NOT NULL,
+    `status`    enum ('new','good','used','bad') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'good',
+    `photo`     varchar(200) COLLATE utf8mb4_general_ci                     NOT NULL,
+    `comments`  text COLLATE utf8mb4_general_ci                             NOT NULL,
     `soldDate`  date                                                                    DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_es_0900_as_cs;
+  COLLATE = utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -456,7 +456,7 @@ CREATE TABLE `sales`
     `status` tinyint NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_es_0900_as_cs;
+  COLLATE = utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -467,12 +467,12 @@ CREATE TABLE `sales`
 CREATE TABLE `users`
 (
     `id`       int                                        NOT NULL,
-    `email`    varchar(100) COLLATE utf8mb4_es_0900_as_cs NOT NULL,
-    `nick`     varchar(100) COLLATE utf8mb4_es_0900_as_cs NOT NULL,
-    `password` varchar(100) COLLATE utf8mb4_es_0900_as_cs NOT NULL
+    `email`    varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+    `nick`     varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+    `password` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_es_0900_as_cs;
+  COLLATE = utf8mb4_general_ci;
 
 --
 -- Bolcament de dades per a la taula `users`
