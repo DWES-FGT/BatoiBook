@@ -12,6 +12,7 @@
 <body>
 <?php
 require("../autoload.php");
+require("../resources/views/header.php");
 
 define("DOCUMENT_ROOT", $_SERVER['DOCUMENT_ROOT']);
 const PATH_PROJECT = "/DWES/BatoiBook";
@@ -27,12 +28,12 @@ $courses = Course::csvToArray(COURSES_CSV_PATH);
 $modules = Module::csvToArray(MODULES_CSV_PATH);
 
 try {
-    $fran = new User(0, "frangregori61@gmail.com", "franchu","FranGT12");
+    $fran = new User(0, "frangregori61@gmail.com", "franchu", "FranGT12");
 } catch (Exception $e) {
     echo "<p>" . $e->getMessage() . "</p>";
 }
 
-$bookFran = new Book((int)null,1, $modules[3]->getCode(), "S.L", 19.95,
+$bookFran = new Book((int)null, 1, $modules[3]->getCode(), "S.L", 19.95,
     200, "New", "", "Libro muy recomendado", "");
 ?>
 

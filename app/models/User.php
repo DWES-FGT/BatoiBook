@@ -2,8 +2,11 @@
 
 namespace app\models;
 
-class User
+use Exception;
+
+class User extends QueryBuilder
 {
+    protected $table = "users";
     const PASSWORD_REGEX = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/";
 
     private int $id;
