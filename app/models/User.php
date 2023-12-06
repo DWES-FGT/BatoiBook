@@ -1,5 +1,7 @@
 <?php
 
+namespace app\models;
+
 class User
 {
     const PASSWORD_REGEX = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/";

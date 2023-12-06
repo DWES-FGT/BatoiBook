@@ -11,15 +11,17 @@
 </head>
 <body>
 <?php
-const PATH_PROJECT = "/DWES/BatoiBook";
+require("../autoload.php");
+
 define("DOCUMENT_ROOT", $_SERVER['DOCUMENT_ROOT']);
+const PATH_PROJECT = "/DWES/BatoiBook";
 const COURSES_CSV_PATH = DOCUMENT_ROOT . PATH_PROJECT . "/resources/csv/coursesbook.csv";
 const MODULES_CSV_PATH = DOCUMENT_ROOT . PATH_PROJECT . "/resources/csv/modulesbook.csv";
 
-require(DOCUMENT_ROOT . PATH_PROJECT . "/app/models/Book.php");
-require(DOCUMENT_ROOT . PATH_PROJECT . "/app/models/Course.php");
-require(DOCUMENT_ROOT . PATH_PROJECT . "/app/models/Module.php");
-require(DOCUMENT_ROOT . PATH_PROJECT . "/app/models/User.php");
+use app\models\Book;
+use app\models\Course;
+use app\models\Module;
+use app\models\User;
 
 $courses = Course::csvToArray(COURSES_CSV_PATH);
 $modules = Module::csvToArray(MODULES_CSV_PATH);
